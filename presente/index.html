@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Um presente para a Dra. Eveline</title>
+<meta name="description" content="Uma cortesia da Evoluze para a Dra. Eveline Leite.">
+<meta name="theme-color" content="#C98C80">
+<link rel="icon" href="/bio/assets/favicon.svg" type="image/svg+xml">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Um presente para a Dra. Eveline">
+<meta property="og:description" content="Uma cortesia da Evoluze.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose-light:#EBC9C0; --rose:#D39C90; --rose-deep:#B97A6E; --cocoa:#8C5A50;
+  --cream:#FDF8F6;
+  --white:#FFFFFF; --veil:rgba(255,255,255,.16); --line:rgba(255,255,255,.55);
+  --font:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --serif:"Cormorant Garamond",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --rose-light:#DDB3A9; --rose:#C68A7E; --rose-deep:#A96D62; } }
+:root[data-theme="dark"]{ --rose-light:#DDB3A9; --rose:#C68A7E; --rose-deep:#A96D62; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:var(--font); color:var(--white); font-weight:300;
+  background:var(--rose);
+  background-image:radial-gradient(120% 70% at 50% 15%, var(--rose-light) 0%, var(--rose) 45%, var(--rose-deep) 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px 20px;
+  -webkit-font-smoothing:antialiased;
+}
+main{width:100%; max-width:440px}
+
+/* ---------- capa ---------- */
+.cover{text-align:center}
+.seal{
+  width:92px; height:92px; margin:0 auto 30px;
+  border:1px solid var(--line); border-radius:50%;
+  display:grid; place-items:center;
+  animation:breathe 4s ease-in-out infinite;
+}
+.seal svg{width:34px; height:34px; color:var(--white)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.cover .kicker{font-size:.76rem; letter-spacing:.24em; text-transform:uppercase; opacity:.85}
+.cover h1{
+  font-family:var(--serif); font-weight:300; font-size:2.3rem; line-height:1.25;
+  margin-top:16px;
+}
+.cover h1 em{font-style:italic}
+.cover .sub{margin-top:18px; font-size:1rem; line-height:1.6; opacity:.92; max-width:280px; margin-left:auto; margin-right:auto}
+.open{
+  margin-top:34px; appearance:none; border:0; cursor:pointer;
+  font:inherit; font-size:1rem; font-weight:400;
+  background:var(--white); color:var(--cocoa);
+  padding:17px 38px; border-radius:999px;
+  transition:transform .15s, box-shadow .15s;
+}
+.open:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(120,60,50,.22)}
+.open:active{transform:translateY(0)}
+
+/* ---------- carta ---------- */
+.letter{display:none}
+.letter.on{display:block}
+.card{
+  background:var(--cream); color:var(--cocoa);
+  border-radius:24px; padding:40px 32px 34px;
+  box-shadow:0 20px 50px rgba(120,60,50,.22);
+}
+.card .top{text-align:center; padding-bottom:26px; border-bottom:1px solid rgba(140,90,80,.18)}
+.card .top .kicker{font-size:.7rem; letter-spacing:.24em; text-transform:uppercase; color:var(--rose-deep)}
+.card .top h2{font-family:var(--serif); font-weight:300; font-size:1.95rem; margin-top:12px; line-height:1.2}
+.note{margin-top:26px}
+.note p{font-size:1.02rem; line-height:1.72; margin-bottom:17px}
+.note p:last-child{margin-bottom:0}
+.note strong{font-weight:500}
+.note .lead{font-family:var(--serif); font-size:1.3rem; line-height:1.5; font-style:italic; color:var(--rose-deep)}
+
+.gift{
+  margin-top:30px; padding:24px 22px;
+  border:1px dashed rgba(140,90,80,.35); border-radius:18px;
+  text-align:center;
+}
+.gift .label{font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-deep)}
+.gift .url{
+  display:block; margin-top:14px;
+  font-size:1.06rem; font-weight:500; color:var(--cocoa);
+  text-decoration:none; word-break:break-all; line-height:1.4;
+}
+.gift .url:hover{color:var(--rose-deep)}
+.gift .hint{margin-top:12px; font-size:.86rem; line-height:1.5; color:#A67D74}
+.copy{
+  margin-top:18px; appearance:none; cursor:pointer; font:inherit; font-size:.92rem;
+  background:var(--rose-deep); color:var(--white); border:0;
+  padding:13px 26px; border-radius:999px;
+  transition:background .2s, transform .15s;
+}
+.copy:hover{background:var(--cocoa); transform:translateY(-1px)}
+.copy:active{transform:translateY(0)}
+.copy.done{background:#7A9A72}
+
+.sign{margin-top:30px; padding-top:24px; border-top:1px solid rgba(140,90,80,.18); text-align:center}
+.sign .from{font-family:var(--serif); font-style:italic; font-size:1.18rem; color:var(--rose-deep)}
+.sign .brand{margin-top:8px; font-size:.78rem; letter-spacing:.26em; text-transform:uppercase; color:#A67D74}
+
+.after{margin-top:26px; text-align:center}
+.after a{
+  display:inline-block; color:var(--white); font-size:.95rem; text-decoration:none;
+  border-bottom:1px solid var(--line); padding-bottom:3px;
+}
+.after a:hover{border-color:var(--white)}
+
+/* ---------- pétalas ---------- */
+.petals{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5}
+.petal{position:absolute; top:-6vh; border-radius:60% 0 60% 0; opacity:0; animation:fall linear forwards}
+@keyframes fall{
+  0%{opacity:0; transform:translateY(-10vh) rotate(0deg)}
+  10%{opacity:.85}
+  100%{opacity:0; transform:translateY(110vh) rotate(540deg)}
+}
+
+button:focus-visible,a:focus-visible{outline:2px solid var(--white); outline-offset:3px}
+.card button:focus-visible,.card a:focus-visible{outline-color:var(--rose-deep)}
+.reveal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){
+  .reveal{animation:none} .seal{animation:none} .petals{display:none}
+  .open,.copy,.gift .url{transition:none}
+}
+@media (max-width:360px){
+  .cover h1{font-size:1.95rem}
+  .card{padding:32px 24px 28px}
+  .gift .url{font-size:.98rem}
+}
+</style>
+</head>
+<body>
+<div class="petals" aria-hidden="true"></div>
+
+<main>
+  <!-- capa -->
+  <section class="cover reveal" id="cover">
+    <div class="seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M12 21c-.6-4.5-3.6-7-6.2-8.4C3.6 11.4 3 9.6 3 8.2 3 5.9 4.8 4 7 4c2 0 3.6 1.2 5 3.3C13.4 5.2 15 4 17 4c2.2 0 4 1.9 4 4.2 0 1.4-.6 3.2-2.8 4.4C15.6 14 12.6 16.5 12 21z"/>
+      </svg>
+    </div>
+    <p class="kicker">Para a Dra. Eveline</p>
+    <h1>Um presente<br><em>feito com carinho</em></h1>
+    <p class="sub">A gente preparou uma coisinha pra você. Leva menos de um minuto pra ler.</p>
+    <button class="open" id="open" type="button">Abrir meu presente</button>
+  </section>
+
+  <!-- carta -->
+  <section class="letter" id="letter" aria-live="polite">
+    <article class="card">
+      <div class="top">
+        <p class="kicker">Uma cortesia da Evoluze</p>
+        <h2>Dra. Eveline,</h2>
+      </div>
+
+      <div class="note">
+        <p class="lead">Tem gente que faz odontologia. E tem gente que faz arte — e você é das segundas.</p>
+        <p>A gente acompanha o cuidado que você coloca em cada resina, em cada detalhe que ninguém além de você repararia. E acompanha também o quanto você ensina, divide o que sabe e puxa outras dentistas junto com você.</p>
+        <p>Isso merecia um cantinho bonito na internet. Um lugar só seu, onde quem chega pela bio encontra tudo organizado: as pacientes de um lado, as dentistas do outro, e o caminho até você em um toque.</p>
+        <p>Então a gente fez. <strong>Sem custo, sem contrato, sem letrinha miúda.</strong> É um presente mesmo, do jeito que presente tem que ser.</p>
+        <p>E olha: isso aqui é um primeiro rascunho, feito no nosso palpite sobre o que combina com você. <strong>Muda tudo o que quiser</strong> — a cor, as palavras, a sua foto, a ordem dos botões, o que entra e o que sai. É só falar com a gente que a gente ajusta até ficar com a sua cara.</p>
+      </div>
+
+      <div class="gift">
+        <p class="label">O seu link da bio</p>
+        <a class="url" id="url" href="https://draevelineleite.vercel.app/bio" target="_blank" rel="noopener">draevelineleite.vercel.app/bio</a>
+        <p class="hint">É só colar esse endereço no campo de site do seu Instagram.</p>
+        <button class="copy" id="copy" type="button">Copiar o link</button>
+      </div>
+
+      <div class="sign">
+        <p class="from">Com carinho,</p>
+        <p class="brand">Evoluze</p>
+      </div>
+    </article>
+
+    <div class="after">
+      <a href="https://draevelineleite.vercel.app/bio" target="_blank" rel="noopener">Ver como ficou</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var cover=document.getElementById('cover'),
+      letter=document.getElementById('letter'),
+      openBtn=document.getElementById('open'),
+      copyBtn=document.getElementById('copy'),
+      url=document.getElementById('url'),
+      petals=document.querySelector('.petals'),
+      reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rain(n){
+    if(reduce) return;
+    for(var i=0;i<n;i++){
+      (function(i){
+        setTimeout(function(){
+          var p=document.createElement('span');
+          p.className='petal';
+          var s=7+Math.random()*9;
+          p.style.width=s+'px';
+          p.style.height=s*1.25+'px';
+          p.style.left=Math.random()*100+'vw';
+          p.style.background=['#FFFFFF','#EBC9C0','#F6DDD6'][i%3];
+          p.style.animationDuration=(5.5+Math.random()*4)+'s';
+          petals.appendChild(p);
+          setTimeout(function(){ p.remove(); }, 11000);
+        }, i*90);
+      })(i);
+    }
+  }
+
+  openBtn.addEventListener('click', function(){
+    cover.style.display='none';
+    letter.classList.add('on');
+    letter.classList.add('reveal');
+    window.scrollTo(0,0);
+    rain(26);
+  });
+
+  copyBtn.addEventListener('click', function(){
+    var txt=url.getAttribute('href');
+    function ok(){
+      copyBtn.textContent='Link copiado';
+      copyBtn.classList.add('done');
+      setTimeout(function(){
+        copyBtn.textContent='Copiar o link';
+        copyBtn.classList.remove('done');
+      },2400);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(ok, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var t=document.createElement('textarea');
+      t.value=txt; t.setAttribute('readonly','');
+      t.style.position='absolute'; t.style.left='-9999px';
+      document.body.appendChild(t); t.select();
+      try{ document.execCommand('copy'); ok(); }catch(e){}
+      t.remove();
+    }
+  });
+})();
+</script>
+</body>
+</html>

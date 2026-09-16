@@ -2,10 +2,11 @@
 
 Site estático (HTML, CSS e JS puro), publicado no Vercel.
 
-| Rota   | O que é                                  |
-|--------|------------------------------------------|
-| `/bio` | Link da bio do Instagram (`bio/index.html`) |
-| `/`    | Landing page (ainda não existe; por enquanto redireciona para `/bio`) |
+| Rota        | O que é                                  |
+|-------------|------------------------------------------|
+| `/bio`      | Link da bio do Instagram (`bio/index.html`) |
+| `/presente` | Carta de entrega da bio (`presente/index.html`), fora dos buscadores |
+| `/`         | Landing page (ainda não existe; por enquanto redireciona para `/bio`) |
 
 ## Estrutura
 
