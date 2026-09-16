@@ -40,30 +40,58 @@ main{width:100%; max-width:440px}
 
 /* ---------- capa ---------- */
 .cover{text-align:center}
-.seal{
-  width:92px; height:92px; margin:0 auto 30px;
-  border:1px solid var(--line); border-radius:50%;
-  display:grid; place-items:center;
-  animation:breathe 4s ease-in-out infinite;
-}
-.seal svg{width:34px; height:34px; color:var(--white)}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .cover .kicker{font-size:.76rem; letter-spacing:.24em; text-transform:uppercase; opacity:.85}
 .cover h1{
-  font-family:var(--serif); font-weight:300; font-size:2.3rem; line-height:1.25;
-  margin-top:16px;
+  font-family:var(--serif); font-weight:300; font-size:2.1rem; line-height:1.25;
+  margin-top:14px;
 }
 .cover h1 em{font-style:italic}
 .cover .sub{margin-top:18px; font-size:1rem; line-height:1.6; opacity:.92; max-width:280px; margin-left:auto; margin-right:auto}
+
+/* vídeo */
+.player{
+  position:relative; margin:26px auto 0; width:100%; max-width:280px;
+  aspect-ratio:9/16; border-radius:22px; overflow:hidden;
+  background:rgba(0,0,0,.2);
+  box-shadow:0 18px 44px rgba(120,60,50,.28);
+  border:1px solid var(--line);
+}
+.player video{width:100%; height:100%; object-fit:cover; display:block; background:#000}
+.play{
+  position:absolute; inset:0; margin:auto;
+  width:74px; height:74px; border-radius:50%;
+  appearance:none; border:0; cursor:pointer;
+  background:rgba(255,255,255,.94); color:var(--rose-deep);
+  display:grid; place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  transition:transform .18s, opacity .25s;
+  animation:pulse 2.6s ease-in-out infinite;
+}
+.play svg{width:34px; height:34px; margin-left:3px}
+.play:hover{transform:scale(1.07)}
+.player.playing .play{opacity:0; pointer-events:none; animation:none}
+@keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.25)}50%{box-shadow:0 8px 24px rgba(0,0,0,.25), 0 0 0 14px rgba(255,255,255,.14)}}
+
 .open{
-  margin-top:34px; appearance:none; border:0; cursor:pointer;
+  margin-top:26px; appearance:none; border:0; cursor:pointer;
   font:inherit; font-size:1rem; font-weight:400;
   background:var(--white); color:var(--cocoa);
   padding:17px 38px; border-radius:999px;
   transition:transform .15s, box-shadow .15s;
+  display:none;
 }
+.open.show{display:inline-block; animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
 .open:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(120,60,50,.22)}
 .open:active{transform:translateY(0)}
+
+.skip{margin-top:18px}
+.skip button{
+  appearance:none; border:0; background:none; cursor:pointer;
+  font:inherit; font-size:.88rem; color:var(--white); opacity:.8;
+  border-bottom:1px solid var(--line); padding:0 0 3px;
+}
+.skip button:hover{opacity:1}
+.skip.hide{display:none}
 
 /* ---------- carta ---------- */
 .letter{display:none}
@@ -130,13 +158,19 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--white); outline-off
 .reveal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
 @media (prefers-reduced-motion: reduce){
-  .reveal{animation:none} .seal{animation:none} .petals{display:none}
-  .open,.copy,.gift .url{transition:none}
+  .reveal{animation:none} .petals{display:none} .play{animation:none}
+  .open.show{animation:none}
+  .open,.copy,.gift .url,.play{transition:none}
 }
 @media (max-width:360px){
-  .cover h1{font-size:1.95rem}
+  .cover h1{font-size:1.8rem}
+  .player{max-width:240px}
   .card{padding:32px 24px 28px}
   .gift .url{font-size:.98rem}
+}
+@media (max-height:720px){
+  .player{max-width:210px}
+  .cover h1{font-size:1.8rem}
 }
 </style>
 </head>
@@ -146,15 +180,23 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--white); outline-off
 <main>
   <!-- capa -->
   <section class="cover reveal" id="cover">
-    <div class="seal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-        <path d="M12 21c-.6-4.5-3.6-7-6.2-8.4C3.6 11.4 3 9.6 3 8.2 3 5.9 4.8 4 7 4c2 0 3.6 1.2 5 3.3C13.4 5.2 15 4 17 4c2.2 0 4 1.9 4 4.2 0 1.4-.6 3.2-2.8 4.4C15.6 14 12.6 16.5 12 21z"/>
-      </svg>
-    </div>
     <p class="kicker">Para a Dra. Eveline</p>
-    <h1>Um presente<br><em>feito com carinho</em></h1>
-    <p class="sub">A gente preparou uma coisinha pra você. Leva menos de um minuto pra ler.</p>
+    <h1>Um recado<br><em>antes do presente</em></h1>
+
+    <div class="player" id="player">
+      <video id="video"
+             src="/presente/media/recado.mp4"
+             poster="/presente/media/recado-capa.jpg"
+             playsinline
+             preload="metadata"></video>
+      <button class="play" id="play" type="button" aria-label="Tocar o vídeo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+      </button>
+    </div>
+
+    <p class="sub" id="hint">Toque para ouvir. São 22 segundos.</p>
     <button class="open" id="open" type="button">Abrir meu presente</button>
+    <p class="skip"><button type="button" id="skip">Prefiro ir direto ao presente</button></p>
   </section>
 
   <!-- carta -->
@@ -200,7 +242,50 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--white); outline-off
       copyBtn=document.getElementById('copy'),
       url=document.getElementById('url'),
       petals=document.querySelector('.petals'),
+      player=document.getElementById('player'),
+      video=document.getElementById('video'),
+      playBtn=document.getElementById('play'),
+      skip=document.getElementById('skip'),
+      hint=document.getElementById('hint'),
       reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function offerGift(){
+    openBtn.classList.add('show');
+    document.querySelector('.skip').classList.add('hide');
+  }
+
+  playBtn.addEventListener('click', function(){
+    player.classList.add('playing');
+    video.setAttribute('controls','');
+    hint.textContent='';
+    var p=video.play();
+    if(p && p.catch){ p.catch(function(){ player.classList.remove('playing'); }); }
+  });
+
+  video.addEventListener('ended', function(){
+    video.removeAttribute('controls');
+    player.classList.remove('playing');
+    hint.textContent='Agora sim: o seu presente.';
+    offerGift();
+  });
+
+  // se o vídeo não carregar, o presente continua acessível
+  function videoFailed(){
+    player.style.display='none';
+    hint.textContent='A gente preparou uma coisinha pra você.';
+    offerGift();
+  }
+  video.addEventListener('error', videoFailed);
+  // o erro pode ter acontecido antes deste script rodar
+  if(video.error || video.networkState===video.NETWORK_NO_SOURCE) videoFailed();
+
+  // rede lenta ou desistência: libera o botão depois de um tempo
+  setTimeout(offerGift, 30000);
+  skip.addEventListener('click', function(){
+    try{ video.pause(); }catch(e){}
+    offerGift();
+    openBtn.focus();
+  });
 
   function rain(n){
     if(reduce) return;
