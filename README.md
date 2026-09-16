@@ -1,41 +1,32 @@
-# Dra. Eveline Leite — link da bio
+# Dra. Eveline Leite
 
-Página única (HTML, CSS e JS puro) usada como link na bio do Instagram.
+Site estático (HTML, CSS e JS puro), publicado no Vercel.
 
-- `index.html` — a página
-- `assets/avatar.jpg` — foto de perfil
-- `assets/marca.png` — marca ao fundo do cabeçalho
-- `assets/favicon.svg` — ícone da aba
+| Rota   | O que é                                  |
+|--------|------------------------------------------|
+| `/bio` | Link da bio do Instagram (`bio/index.html`) |
+| `/`    | Landing page (ainda não existe; por enquanto redireciona para `/bio`) |
 
-## Como editar
+## Estrutura
 
-Os botões ficam dentro das seções `#paciente` e `#dentista` em `index.html`.
+- `bio/index.html` — página de links
+- `bio/assets/` — foto de perfil, marca e favicon
+- `vercel.json` — URLs limpas, redirecionamento da raiz e cabeçalhos
+
+## Como editar a bio
+
+Os botões ficam nas seções `#paciente` e `#dentista` de `bio/index.html`.
 Cada botão é um `<a class="btn">` com o link no `href`. Os links de WhatsApp
 já vêm com a mensagem pré-preenchida no parâmetro `text`.
-
 Cores e fontes estão no bloco `:root` do CSS, no topo do arquivo.
+
+## Landing page
+
+Quando a landing page existir, coloque-a em `index.html` na raiz e remova o
+redirecionamento de `/` em `vercel.json`. O link da bio continua em `/bio`.
 
 ## Publicar
 
-Não precisa de build. Qualquer host de site estático serve: Vercel, Netlify,
-GitHub Pages ou Cloudflare Pages. Basta apontar para a raiz do repositório.
-
-### Opção 1: GitHub Pages (já configurado)
-
-1. No GitHub, abra **Settings → Pages**.
-2. Em **Build and deployment → Source**, escolha **GitHub Actions**.
-3. Vá em **Actions**, abra o workflow "Publicar site" e clique em **Run workflow**.
-
-O endereço fica `https://guscaciotti-hub.github.io/draevelineleite/`.
-Todo push na branch republica sozinho.
-
-### Opção 2: Netlify (endereço draevelineleite.netlify.app)
-
-Já existe um site chamado `draevelineleite` na conta do Netlify.
-Em **Site configuration → Build & deploy → Link repository**, conecte este
-repositório. O `netlify.toml` já diz para publicar a raiz sem build.
-
-### Domínio próprio
-
-Nos dois casos dá pra apontar um domínio (ex.: `draevelineleite.com.br`)
-nas configurações do host. Em `index.html`, não há nada dependente do endereço.
+No Vercel, importe este repositório (Add New → Project → Import). Não há
+build: framework "Other", diretório de saída vazio. Cada push na branch de
+produção publica sozinho.
