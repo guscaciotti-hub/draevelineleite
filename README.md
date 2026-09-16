@@ -3,7 +3,7 @@
 Página única (HTML, CSS e JS puro) usada como link na bio do Instagram.
 
 - `index.html` — a página
-- `assets/avatar.png` — foto de perfil
+- `assets/avatar.jpg` — foto de perfil
 - `assets/marca.png` — marca ao fundo do cabeçalho
 - `assets/favicon.svg` — ícone da aba
 
